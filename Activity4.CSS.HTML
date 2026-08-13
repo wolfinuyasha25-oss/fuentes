@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Manga Blog</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#eee;
+    color:#111;
+    line-height:1.5;
+}
+
+header,section,footer{
+    width:100%;
+    padding:40px 5%;
+}
+
+header{
+    background:#111;
+    color:white;
+    text-align:center;
+    border-bottom:6px solid #000;
+}
+
+header h1{
+    font: bold clamp(35px,6vw,70px) Georgia;
+    text-transform:uppercase;
+    text-shadow:5px 5px #555;
+}
+
+header p{margin:8px}
+
+.top{
+    display:block;
+    text-align:center;
+    padding:12px;
+    background:white;
+    color:#111;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.top:hover{background:#111;color:white}
+
+section{
+    background:white;
+    border-bottom:4px solid #111;
+}
+
+h2{
+    text-align:center;
+    font: bold clamp(25px,4vw,42px) Georgia;
+    padding:15px;
+    margin-bottom:30px;
+    border:4px solid #111;
+    box-shadow:7px 7px #111;
+}
+
+h3{font-family:Georgia;margin-bottom:10px}
+
+.nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#111;
+    color:white;
+    padding:20px;
+}
+
+.nav ul{
+    display:flex;
+    gap:10px;
+    list-style:none;
+}
+
+.nav a{
+    color:white;
+    text-decoration:none;
+    border:2px solid white;
+    padding:8px 15px;
+}
+
+.nav a:hover{
+    background:white;
+    color:#111;
+}
+
+.box{
+    padding:30px;
+    border:4px solid #111;
+    background:#f5f5f5;
+    box-shadow:8px 8px #111;
+}
+
+.box p{
+    background:white;
+    padding:18px;
+    margin:15px 0;
+    border:3px solid #111;
+}
+
+.speech{
+    margin:30px auto;
+    padding:25px;
+    max-width:600px;
+    text-align:center;
+    font-weight:bold;
+    background:white;
+    border:4px solid #111;
+    border-radius:50%;
+}
+
+.lists{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
+}
+
+.lists ol,.lists ul{
+    background:white;
+    border:4px solid #111;
+    padding:25px 45px;
+    box-shadow:5px 5px #555;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+figure{
+    background:white;
+    padding:12px;
+    border:4px solid #111;
+    box-shadow:6px 6px #555;
+}
+
+figure img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border:3px solid #111;
+}
+
+figcaption{
+    text-align:center;
+    font-weight:bold;
+    padding:10px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    border:4px solid #111;
+}
+
+th,td{
+    padding:14px;
+    border:2px solid #111;
+    text-align:center;
+}
+
+th{
+    background:#111;
+    color:white;
+}
+
+.cards{
+    display:flex;
+    gap:20px;
+}
+
+.card{
+    flex:1;
+    padding:30px;
+    text-align:center;
+    border:4px solid #111;
+    box-shadow:6px 6px #111;
+}
+
+.card:hover{
+    background:#ddd;
+    transform:translateY(-5px);
+}
+
+.manga-gallery{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.manga-gallery img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border:4px solid #111;
+    filter:grayscale(100%);
+}
+
+.manga-gallery img:hover{
+    filter:none;
+    transform:scale(1.03);
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
+}
+
+.main,.side{
+    padding:25px;
+    border:4px solid #111;
+}
+
+.main{background:#eee}
+.side{box-shadow:6px 6px #111}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.product{
+    padding:25px;
+    text-align:center;
+    border:4px solid #111;
+    background:white;
+    box-shadow:5px 5px #555;
+}
+
+.calendar{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:4px;
+}
+
+.day{
+    padding:20px 5px;
+    text-align:center;
+    border:2px solid #111;
+    background:#eee;
+}
+
+.day.header{
+    background:#111;
+    color:white;
+    font-weight:bold;
+}
+
+.span{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.span div{
+    min-height:100px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border:4px solid #111;
+    font-weight:bold;
+}
+
+.big{
+    grid-column:span 2;
+    grid-row:span 2;
+    background:#111;
+    color:white;
+}
+
+form{
+    max-width:800px;
+    margin:auto;
+    padding:30px;
+    border:4px solid #111;
+    background:#eee;
+}
+
+input,textarea,select{
+    width:100%;
+    padding:12px;
+    margin:8px 0 18px;
+    border:3px solid #111;
+    font-size:16px;
+}
+
+input[type=checkbox],
+input[type=radio]{
+    width:auto;
+}
+
+button,input[type=submit]{
+    width:auto;
+    padding:12px 30px;
+    background:#111;
+    color:white;
+    border:3px solid #111;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover,input[type=submit]:hover{
+    background:white;
+    color:#111;
+}
+
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+}
+
+footer a{
+    color:white;
+}
+
+@media(max-width:800px){
+    .nav,.cards{flex-direction:column}
+    .nav ul{flex-direction:column}
+    .gallery,.manga-gallery,.products{
+        grid-template-columns:repeat(2,1fr);
+    }
+    .layout{grid-template-columns:1fr}
+}
+
+@media(max-width:500px){
+    section,header,footer{padding:25px 15px}
+    .gallery,.manga-gallery,.products{
+        grid-template-columns:1fr;
+    }
+    .cards{gap:15px}
+    .calendar{gap:2px}
+    .day{padding:12px 2px;font-size:12px}
+    .span{grid-template-columns:repeat(2,1fr)}
+    .big{
+        grid-column:span 2;
+        grid-row:span 2;
+    }
+}
+.center-container{
+    min-height:300px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#eee;
+    border:4px solid #111;
+}
+
+.center-box{
+    padding:40px;
+    background:#111;
+    color:white;
+    border:4px solid white;
+    outline:4px solid #111;
+    font-size:28px;
+    font-weight:bold;
+    transform:rotate(-3deg);
+}
+
+</style>
+</head>
+
+<body id="top">
+
+<a class="top" href="#bottom">↓ GO TO BOTTOM ↓</a>
+
+<header>
+    <h1>My First Blog</h1>
+    <p><b>Publication Date:</b> August 3, 2026</p>
+    <p><b>Author:</b> John Nehemiah F. Contrata</p>
+</header>
+
+<section>
+<h2>Manga Navigation</h2>
+
+<nav class="nav">
+    <h3>MY WEBSITE</h3>
+    <ul>
+        <li><a href="#introduction">Home</a></li>
+        <li><a href="#hobbies">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#feedback">Contact</a></li>
+    </ul>
+</nav>
+</section>
+
+<section id="introduction">
+<h2>Introduction</h2>
+
+<div class="box">
+    <p>Technology is an important part of our daily lives. It helps us communicate, study, work, and solve problems.</p>
+    <p>As a BIT student, learning HTML is an important step toward becoming a web developer.</p>
+    <p>Programming can be difficult, but every mistake teaches me something new.</p>
+    <p>Hopefully, someday I can create useful websites and applications.</p>
+</div>
+
+<div class="speech">
+    "Every mistake teaches me something new."
+</div>
+</section>
+
+<section id="hobbies">
+<h2>Favorite Hobbies</h2>
+
+<div class="lists">
+    <div>
+        <h3>My Top Hobbies</h3>
+        <ol>
+            <li>Playing Volleyball</li>
+            <li>Reading Manga</li>
+            <li>Watching Movies</li>
+        </ol>
+    </div>
+
+    <div>
+        <h3>Other Interests</h3>
+        <ul>
+            <li>Listening to Music</li>
+            <li>Reading Articles</li>
+            <li>Playing Online Games</li>
+        </ul>
+    </div>
+</div>
+</section>
+
+<section id="gallery">
+<h2>Manga Gallery</h2>
+
+<div class="gallery">
+    <figure>
+        <img src="360_F_123198705_HHB36SHxNnTspMYX7mXqg9rAGwS5tNB0.jpg">
+        <figcaption>Playing Volleyball</figcaption>
+    </figure>
+
+    <figure>
+        <img src="how-to-start-reading-manga.jpeg">
+        <figcaption>Reading Manga</figcaption>
+    </figure>
+
+    <figure>
+        <img src="movies.jpg">
+        <figcaption>Watching Movies</figcaption>
+    </figure>
+</div>
+</section>
+
+<section>
+<h2>Class Schedule</h2>
+
+<table>
+<tr>
+    <th>Subject</th>
+    <th>Day</th>
+    <th>Time</th>
+    <th>Room</th>
+</tr>
+<tr>
+    <td>Basic Statistics</td>
+    <td>Monday</td>
+    <td>8:30 AM - 10:00 AM</td>
+    <td>BLDG 301</td>
+</tr>
+<tr>
+    <td>Web Development</td>
+    <td>Monday</td>
+    <td>10:00 AM - 12:30 PM</td>
+    <td>BLDG 203</td>
+</tr>
+<tr>
+    <td>Specialized Technology 1</td>
+    <td>Monday</td>
+    <td>3:30 PM - 6:00 PM</td>
+    <td>BLDG 201</td>
+</tr>
+</table>
+</section>
+
+<section>
+<h2>What I'm Learning</h2>
+
+<div class="cards">
+    <div class="card">
+        <h3>HTML</h3>
+        <p>Building web pages</p>
+    </div>
+
+    <div class="card">
+        <h3>CSS</h3>
+        <p>Designing web pages</p>
+    </div>
+
+    <div class="card">
+        <h3>JavaScript</h3>
+        <p>Making pages interactive</p>
+    </div>
+</div>
+</section>
+
+<section>
+<h2>Manga Wallpaper Gallery</h2>
+
+<div class="manga-gallery">
+    <img src="https://4kwallpapers.com/images/walls/thumbs_2t/26035.jpg">
+    <img src="https://i.pinimg.com/736x/db/70/37/db7037de7e594360eff498c1da97fcda.jpg">
+    <img src="https://w0.peakpx.com/wallpaper/109/682/HD-wallpaper-hunter-x-hunter-anime-hunterxhunter.jpg">
+    <img src="https://4kwallpapers.com/images/walls/thumbs_2t/22575.png">
+    <img src="https://4kwallpapers.com/images/walls/thumbs_2t/11990.jpeg">
+    <img src="https://4kwallpapers.com/images/walls/thumbs_2t/24472.png">
+    <img src="https://4kwallpapers.com/images/walls/thumbs_2t/26522.jpg">
+    <img src="https://4kwallpapers.com/images/walls/thumbs_2t/24353.png">
+</div>
+</section>
+
+<section>
+<h2>Centered </h2>
+
+<div class="center-container">
+    <div class="center-box">
+        CENTERED 
+    </div>
+</div>
+</section>
+
+<section>
+<h2>Blog Layout</h2>
+
+<div class="layout">
+    <div class="main">
+        <h3>Main Content</h3>
+        <p>This is the main content area of my manga blog.</p>
+    </div>
+
+    <div class="side">
+        <h3>Sidebar</h3>
+        <p>My favorite manga and hobbies.</p>
+    </div>
+</div>
+</section>
+
+<section>
+<h2>Product Grid</h2>
+
+<div class="products">
+    <div class="product"><h3>Manga 1</h3><p>₱500</p></div>
+    <div class="product"><h3>Manga 2</h3><p>₱700</p></div>
+    <div class="product"><h3>Manga 3</h3><p>₱900</p></div>
+    <div class="product"><h3>Manga 4</h3><p>₱1,000</p></div>
+    <div class="product"><h3>Manga 5</h3><p>₱600</p></div>
+    <div class="product"><h3>Manga 6</h3><p>₱800</p></div>
+    <div class="product"><h3>Manga 7</h3><p>₱1,200</p></div>
+    <div class="product"><h3>Manga 8</h3><p>₱1,500</p></div>
+</div>
+</section>
+
+<section>
+<h2>Calendar</h2>
+
+<div class="calendar">
+    <div class="day header">Sun</div>
+    <div class="day header">Mon</div>
+    <div class="day header">Tue</div>
+    <div class="day header">Wed</div>
+    <div class="day header">Thu</div>
+    <div class="day header">Fri</div>
+    <div class="day header">Sat</div>
+
+    <div class="day">1</div><div class="day">2</div>
+    <div class="day">3</div><div class="day">4</div>
+    <div class="day">5</div><div class="day">6</div>
+    <div class="day">7</div><div class="day">8</div>
+    <div class="day">9</div><div class="day">10</div>
+    <div class="day">11</div><div class="day">12</div>
+    <div class="day">13</div><div class="day">14</div>
+    <div class="day">15</div><div class="day">16</div>
+    <div class="day">17</div><div class="day">18</div>
+    <div class="day">19</div><div class="day">20</div>
+    <div class="day">21</div><div class="day">22</div>
+    <div class="day">23</div><div class="day">24</div>
+    <div class="day">25</div><div class="day">26</div>
+    <div class="day">27</div><div class="day">28</div>
+    <div class="day">29</div><div class="day">30</div>
+</div>
+</section>
+
+<section>
+<h2>Grid Spanning</h2>
+
+<div class="span">
+    <div class="big">MANGA PANEL</div>
+    <div>BOX 2</div>
+    <div>BOX 3</div>
+    <div>BOX 4</div>
+    <div>BOX 5</div>
+</div>
+</section>
+
+<section id="feedback">
+<h2>Feedback Form</h2>
+
+<form>
+    <label>Name:</label>
+    <input type="text" placeholder="Enter your name" required>
+
+    <label>Email:</label>
+    <input type="email" placeholder="Enter your email" required>
+
+    <label>Feedback:</label>
+    <textarea rows="5" placeholder="Write your feedback..." required></textarea>
+
+    <h3>Skills</h3>
+    <label><input type="checkbox"> HTML</label><br>
+    <label><input type="checkbox"> CSS</label><br>
+    <label><input type="checkbox"> JavaScript</label><br><br>
+
+    <h3>Contact Method</h3>
+    <label><input type="radio" name="contact"> Phone</label><br>
+    <label><input type="radio" name="contact"> Email</label><br><br>
+
+    <label>Country:</label>
+    <select>
+        <option>Philippines</option>
+        <option>Japan</option>
+        <option>South Korea</option>
+        <option>Canada</option>
+        <option>United States</option>
+    </select>
+
+    <label>Profile Picture:</label>
+    <input type="file">
+
+    <input type="submit" value="SUBMIT">
+</form>
+</section>
+
+<footer id="bottom">
+    <p>&copy; 2026 John Nehemiah F. Contrata. All Rights Reserved.</p>
+    <a href="#top">↑ BACK TO TOP ↑</a>
+</footer>
+
+</body>
+</html>
