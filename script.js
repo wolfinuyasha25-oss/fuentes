@@ -1,44 +1,67 @@
-const nameInput = document.getElementById('nameInput');
-const emailInput = document.getElementById('emailInput');
-const ratingInput = document.getElementById('ratingInput');
-const suggestionsInput = document.getElementById('suggestionsInput');
+document.addEventListener("DOMContentLoaded", function() {
+    const registrationForm = document.getElementById("registrationForm");
 
-const submitButton = document.getElementById('submitButton');
-const errorMessage = document.getElementById('errorMessage');
-const outputDiv = document.getElementById('feedbackOutput');
+    registrationForm.addEventListener("submit", function(event) {
+        event.preventDefault();
 
-const outputName = document.getElementById('outputName');
-const outputEmail = document.getElementById('outputEmail');
-const outputRating = document.getElementById('outputRating');
-const outputSuggestions = document.getElementById('outputSuggestions');
+        const name = document.getElementById("regFullName").value.trim();
+        const email = document.getElementById("regEmail").value.trim();
+        const password = document.getElementById("regPassword").value;
+        const error = document.getElementById("registrationError");
+
+        if (!name || !email || !password) {
+            error.textContent = "Please fill in all fields!";
+            return;
+        }
+
+        alert("Registration Successful! Welcome, " + name + "!");
+
+        document.getElementById("registrationPage").style.display = "none";
+        document.getElementById("storefront").style.display = "block";
+    });
+});
 
 
-submitButton.addEventListener('click', function(event) {
+function buyNow(product) {
+    alert("You selected: " + product);
+}
 
+function greetUser() {
+    let name = document.getElementById("name").value.trim();
+    let age = Number(document.getElementById("age").value);
+    let result = document.getElementById("result");
+
+    if (name === "" || age <= 0 || !Number.isInteger(age)) {
+        result.textContent = "Please enter a valid name and age.";
+    } else if (age < 18) {
+        result.textContent = "Hello " + name + "! You are a minor.";
+    } else {
+        result.textContent = "Hello " + name + "! You are an adult.";
+    }
+}
+
+
+function submitForm(event) {
     event.preventDefault();
 
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
-    const rating = ratingInput.value;
-    const suggestions = suggestionsInput.value.trim();
+    const name = document.getElementById("nameInput").value.trim();
+    const email = document.getElementById("emailInput").value.trim();
+    const rating = document.getElementById("ratingInput").value;
+    const suggestions = document.getElementById("suggestionsInput").value.trim();
 
-   
     if (!name || !email || !rating || !suggestions) {
-        errorMessage.textContent = "Please fill in all fields.";
-        return;
-    }
-    if (rating < 1 || rating > 5) {
-        errorMessage.textContent = "Rating must be between 1 and 5.";
+        document.getElementById("errorMessage").textContent =
+            "Please fill in all fields!";
         return;
     }
 
-    errorMessage.textContent = "";
-  
-    outputName.textContent = name;
-    outputEmail.textContent = email;
-    outputRating.textContent = rating;
-    outputSuggestions.textContent = suggestions;
+    document.getElementById("outputName").textContent = name;
+    document.getElementById("outputEmail").textContent = email;
+    document.getElementById("outputRating").textContent = rating;
+    document.getElementById("outputSuggestions").textContent = suggestions;
 
+    document.getElementById("feedbackOutput").style.display = "block";
+    document.getElementById("errorMessage").textContent = "";
 
-    outputDiv.style.display = "block";
-});
+    document.getElementById("feedbackForm").reset();
+}

@@ -1,3 +1,12 @@
+header {
+    background-color: #5c4033;
+    color: white;
+    padding: 30px;
+}
+header h1 {
+    margin: 0;
+}
+
 body {
     font-family: Arial;
     margin: 0;
@@ -10,14 +19,102 @@ body {
     background-attachment: fixed;
 }
 
-header {
-    background-color: #5c4033;
-    color: white;
-    padding: 30px;
+
+#registrationPage {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #172554, #2563eb);
 }
 
-header h1 {
-    margin: 0;
+.registration-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.registration-box h1 {
+    color: #172554;
+    margin-bottom: 10px;
+}
+
+.registration-box h2 {
+    color: #2563eb;
+    margin-bottom: 20px;
+}
+
+.registration-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+}
+
+.registration-box button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.registration-box button:hover {
+    background: #172554;
+}
+
+/* INPUTS */
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+button {
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.registration-box button {
+    width: 100%;
+    margin-top: 12px;
+    background: #2563eb;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+#registrationError {
+    color: red;
+    margin-top: 10px;
+}
+
+.section-title {
+    text-align: center;
+    margin: 30px 0 20px;
 }
 
 .cards {
@@ -47,34 +144,15 @@ header h1 {
     color: #5c4033;
 }
 
+.card p {
+    margin: 5px 0;
+}
+
 .price {
     color: #8b5e3c;
     font-weight: bold;
 }
 
-.feedback {
-    background-color: white;
-    width: 350px;
-    margin: 30px auto;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.feedback h2 {
-    color: #5c4033;
-}
-
-input,
-select,
-textarea {
-    width: 90%;
-    padding: 10px;
-    margin: 7px;
-}
-
-textarea {
-    height: 80px;
-}
 
 button {
     background-color: #5c4033;
@@ -99,8 +177,6 @@ button {
     margin-bottom: 25px;
     color: #222;
 }
-
-
 .feedback input,
 .feedback select {
     width: 100%;
@@ -111,13 +187,11 @@ button {
     font-size: 15px;
     box-sizing: border-box;
 }
-
 .feedback input:focus,
 .feedback select:focus {
     outline: none;
     border-color: #174ee5;
 }
-
 .feedback button {
     width: 100%;
     padding: 12px;
@@ -169,4 +243,68 @@ button {
     background: #222;
     color: white;
     font-size: 14px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 26px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .card {
+        padding: 10px;
+    }
+
+    .card img {
+        height: 150px;
+    }
+
+    .feedback {
+        margin: 20px 12px;
+        padding: 18px;
+    }
+}
+
+.activity1 {
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.activity1 h2 {
+    color: #172554;
+    margin-bottom: 15px;
+}
+
+.activity1 input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.activity1 button {
+    width: 100%;
+    padding: 12px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.activity1 button:hover {
+    background: #172554;
 }

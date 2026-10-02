@@ -1,83 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JN CLOTHING</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <header>
-        <h1>JN CLOTHING</h1>
-        <p>Find your style with us!</p>
-    </header>
+    <div id="registrationPage">
+        <div class="registration-box">
+            <h1>JN CLOTHING</h1>
+            <h2>Registration Form</h2>
 
-    <h2>Our Products</h2>
+            <form id="registrationForm">
+                <input type="text" id="regFullName"
+                    placeholder="Full Name" required>
 
-    <div class="cards">
+                <input type="email" id="regEmail"
+                    placeholder="Email Address" required>
 
-        <div class="card">
-            <img src="https://i.pinimg.com/736x/83/be/90/83be90e4fc3e76318ef28ade607670cb.jpg" alt="T-Shirt">
-            <h3>Basic T-Shirt</h3>
-            <p>Comfortable cotton shirt.</p>
-            <p class="price">₱399</p>
-            <button class="buy-button"
-            onclick="buyNow('Simple t-Shirt')">
-            Buy Now
-            </button>
+                <input type="password" id="regPassword"
+                    placeholder="Password" required>
+
+                <button type="submit">Register</button>
+            </form>
+
+            <p id="registrationError"></p>
         </div>
-
-        <div class="card">
-            <img src="https://m.media-amazon.com/images/I/715TdaWb12L._AC_UY1000_.jpg" alt="Jeans">
-            <h3>Baggy</h3>
-            <p>Stylish and comfortable.</p>
-            <p class="price">₱799</p>
-            <button class="buy-button"
-            onclick="buyNow('Simple Baggy')">
-            Buy Now
-            </button>
-        </div>
-
-        <div class="card">
-            <img src="https://cdn-images.farfetch-contents.com/32/49/72/70/32497270_62840097_600.jpg" alt="Hoodie">
-            <h3>Hoodie</h3>
-            <p>Perfect for a cool day.</p>
-            <p class="price">₱699</p>
-            <button class="buy-button"
-                onclick="buyNow('Simple Hoodie')">
-                Buy Now
-            </button>
-        </div>
-
-        <div class="card">
-            <img src="https://img.lazcdn.com/g/p/544f88711f40077c92cc922c1ff81736.jpg_720x720q80.jpg" alt="Jacket">
-            <h3>Casual Jacket</h3>
-            <p>Stylish and comfortable.</p>
-            <p class="price">₱999</p>
-            <button class="buy-button"
-                onclick="buyNow('Simple Casual Jacket')">
-                Buy Now
-            </button>
-        </div>
-
-        <div class="card">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfTZVzB1v0fvHBp-xm8HcnU7UeVi-UNvJazhPKcU7Xj1IBSiR-TAWnA1I&s=10" alt="Cap">
-            <h3>Classic Cap</h3>
-            <p>perfect for everyday wear.</p>
-            <p class="price">₱299</p>
-            <button class="buy-button"
-                onclick="buyNow('Simple Classic Cap')">
-                Buy Now
-            </button>
-        </div>
-
     </div>
 
-   <div class="feedback">
+    <div id="storefront" style="display:none;">
 
-    <h2>Customer Feedback</h2>
+        <header>
+            <h1>JN CLOTHING</h1>
+            <p>Find your style with us!</p>
+        </header>
 
-    <form onsubmit="submitForm(event)">
+        
+<section class="activity1">
+    <h2>AGE FINDER</h2>
+
+    <input type="text" id="name" placeholder="Enter your name">
+    <input type="number" id="age" placeholder="Enter your age">
+
+    <button onclick="greetUser()">Submit</button>
+
+    <p id="result"></p>
+</section>
+
+        <h2 class="section-title">Our Products</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <img src="https://i.pinimg.com/736x/83/be/90/83be90e4fc3e76318ef28ade607670cb.jpg" alt="T-Shirt">
+                <h3>Basic T-Shirt</h3>
+                <p>Comfortable cotton shirt.</p>
+                <p class="price">₱399</p>
+                <button class="buy-button"
+                    onclick="buyNow('Basic T-Shirt')">
+                    Buy Now
+                </button>
+            </div>
+
+            <div class="card">
+                <img src="https://m.media-amazon.com/images/I/715TdaWb12L._AC_UY1000_.jpg" alt="Baggy">
+                <h3>Baggy</h3>
+                <p>Stylish and comfortable.</p>
+                <p class="price">₱799</p>
+                <button class="buy-button"
+                    onclick="buyNow('Baggy')">
+                    Buy Now
+                </button>
+            </div>
+
+            <div class="card">
+                <img src="https://cdn-images.farfetch-contents.com/32/49/72/70/32497270_62840097_600.jpg" alt="Hoodie">
+                <h3>Hoodie</h3>
+                <p>Perfect for a cool day.</p>
+                <p class="price">₱699</p>
+                <button class="buy-button"
+                    onclick="buyNow('Hoodie')">
+                    Buy Now
+                </button>
+            </div>
+
+            <div class="card">
+                <img src="https://img.lazcdn.com/g/p/544f88711f40077c92cc922c1ff81736.jpg_720x720q80.jpg" alt="Jacket">
+                <h3>Casual Jacket</h3>
+                <p>Stylish and comfortable.</p>
+                <p class="price">₱999</p>
+                <button class="buy-button"
+                    onclick="buyNow('Casual Jacket')">
+                    Buy Now
+                </button>
+            </div>
+
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfTZVzB1v0fvHBp-xm8HcnU7UeVi-UNvJazhPKcU7Xj1IBSiR-TAWnA1I&s=10" alt="Cap">
+                <h3>Classic Cap</h3>
+                <p>Perfect for everyday wear.</p>
+                <p class="price">₱299</p>
+                <button class="buy-button"
+                    onclick="buyNow('Classic Cap')">
+                    Buy Now
+                </button>
+            </div>
+            
+
+        </div>
+
+        <div class="feedback">
+            <h2>Customer Feedback</h2>
+
+           <form onsubmit="submitForm(event)">
 
         <input type="text"
                id="nameInput"
@@ -122,10 +159,13 @@
 
 <div id="errorMessage" class="error-message"></div>
 
-<div class="footer">
-    <p>&copy; 2026 JN CLOTHING. All rights reserved.</p>
-</div>
+        <!-- FOOTER -->
+        <div class="footer">
+            <p>&copy; 2026 JN CLOTHING. All rights reserved.</p>
+        </div>
 
-  <script src="script.js"></script>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
